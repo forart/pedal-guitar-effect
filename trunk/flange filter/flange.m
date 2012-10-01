@@ -21,7 +21,7 @@ infile = 'song.wav';
 %%%%%%% EFFECT COEFFICIENTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Variation factor
-v = 0.002;
+v=0.002;
 % Rate
 r=0.5;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -29,7 +29,7 @@ r=0.5;
 function [y]=flange(fs, v, y, r);
 
 %we start to create the signal variating the sample rate
-md= ceil(v*fs);
+md=ceil(v*fs);
 n=1:length(y)+md;
 v=round(v*fs);
 z=zeros(md,1);
