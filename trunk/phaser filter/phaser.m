@@ -1,4 +1,3 @@
-% BP filter with narrow pass band, Fc oscillates up and down the spectrum
 % Difference equation taken from DAFX chapter 2
 
 clear all;
@@ -40,15 +39,15 @@ Fc = Fc(1:length(x));
 F1 = 2*sin((pi*Fc(1))/fs);  % must be recalculated each time Fc changes
 Q1 = 2*damp;                % this dictates size of the pass bands
 yh=zeros(size(x));          % create emptly out vectors
-yb=zeros(size(x));
+y=zeros(size(x));
 yl=zeros(size(x));
 
 % first sample, to avoid referencing of negative signals
 yh(1) = x(1);
-yb(1) = F1*yh(1);
-yl(1) = F1*yb(1);
+y(1) = F1*yh(1);
+yl(1) = F1*y(1);
 
-% apply difference equation to the sample
+% apply difference equation to the sample, but starting in the second one (the first one was created before)
 for n=2:length(x),
     
     %Notch Filter (Bandreject (BR)/Bandpass(BP))
@@ -59,24 +58,24 @@ for n=2:length(x),
 	[b,a] = iirnotch(wo,bw);
     %Review the comments of
     %http://www.mathworks.com/matlabcentral/newsreader/view_thread/292960
-	%y=filter(b,a,x);yh(n) = x(n) - yl(n-1) - Q1*yb(n-1);
-    %yb(n) = F1*yh(n) + yb(n-1);
-    %yl(n) = F1*yb(n) + yl(n-1);
+	%y=filter(b,a,x);yh(n) = x(n) - yl(n-1) - Q1*y(n-1);
+    %y(n) = F1*yh(n) + y(n-1);
+    %yl(n) = F1*y(n) + yl(n-1);
 	%End of Notch Filter
     
     F1 = 2*sin((pi*Fc(n))/fs);
 end
 
 %normalise
-maxyb = max(abs(yb));
-yb = yb/maxyb;
+max_y = max(abs(y));
+y = y/max_y;
 
 % write output wav files
-wavwrite(yb, fs, N, 'phaser.wav');
+wavwrite(y, fs, N, 'phaser.wav');
 
 %and we show it
 figure(1)
 hold on
 plot(x,'r');
-plot(yb,'b');
+plot(y,'b');
 title('Phaser and Original Signal');
