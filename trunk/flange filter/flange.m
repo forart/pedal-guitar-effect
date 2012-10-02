@@ -52,5 +52,5 @@ wavwrite(y, fs, N, 'flanger.wav');
 figure(1)
 hold on
 plot(x,'r');
-plot(yb,'b');
+plot(y,'b');
 title('Flanger and Original Signal');
