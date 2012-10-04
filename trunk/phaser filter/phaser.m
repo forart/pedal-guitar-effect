@@ -53,9 +53,10 @@ for n=2:length(x),
     %Notch Filter (Bandreject (BR)/Bandpass(BP))
     
 	x=0.7*sin(2*pi*50*t)+sin(2*pi*120*t);
-	wo = 50/(1000/2); 
-	bw = wo/35;
+	wo = fo/(fs/2);  %fo is the tone that should be eliminated
+	bw = wo/35; %the BW of the notch located at wo
 	[b,a] = iirnotch(wo,bw);
+	y=filter(b,a,x);
     %Review the comments of
     %http://www.mathworks.com/matlabcentral/newsreader/view_thread/292960
 	%y=filter(b,a,x);yh(n) = x(n) - yl(n-1) - Q1*y(n-1);
