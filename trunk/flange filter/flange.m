@@ -15,7 +15,7 @@ infile = 'song.wav';
 %      r = Rate.
 %
 %   Example:     
-%      >>y = flange(fs,0.002,x,0.5);%
+%      >>y = flange(fs,0.002,x,0.5);
 %
 
 %%%%%%% EFFECT COEFFICIENTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
