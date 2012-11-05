@@ -11,6 +11,7 @@ infile = 'song.wav';
 %%%%%%% EFFECT COEFFICIENTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % damping factor. The lower the damping factor, the smaller the pass band
+% value taken from an example on the internet
 damp = 0.05;
 
 % min and max centre cutoff frequency of variable bandpass filter
@@ -25,7 +26,7 @@ Fw = 2000;
 %delta=0.1; --> 0.1 => at 44100 samples per second should mean 4.41kHz Fc shift per sec
 delta = Fw/fs;
 
-% create triangle wave of centre frequency values
+% create triangle wave centered between minf and maxf
 Fc=minf:delta:maxf;
 while(length(Fc) < length(x) )
     Fc= [ Fc (maxf:-delta:minf) ];
