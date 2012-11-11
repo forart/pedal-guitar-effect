@@ -9,7 +9,7 @@ a=1;
 
 %Calculate the number of samples in the delay
     % No. Of Samples = D = delay*fs
-delay = 10e-3; % delay = 10ms 
+delay = 10e-3; % delay = 10ms
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
