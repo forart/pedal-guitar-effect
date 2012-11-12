@@ -1,6 +1,6 @@
 function y = flanger_m();
 
-[x, fs, n] = wavread('bip.wav'); %read in wav file
+[x, fs, n] = wavread('bip.wav'); %read in wav file 
 
 %%%%%%% EFFECT COEFFICIENTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
