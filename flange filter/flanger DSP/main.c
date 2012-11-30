@@ -75,11 +75,14 @@ volatile int iTxBuffer1[8];
 volatile int iRxBuffer1[8];
 
 // init FlagAMode - hvad der skal ske ved pushbutton
-short FlagAMode = PASS_THROUGH; 
+short FlagAMode = FIR_FILTER_ACTIVE; 
 
 // Filter-relateret
 short xn, x1=0, x2=0, y1=0, y2=0; // init delay line
 short b0, b1, b2, a1, a2;
+
+int myCounter=0;
+
 
 //global variables. For using them in another file, they must be called like normal, but wit 'external ' before the int, float,...
 int a = 1;
@@ -88,9 +91,9 @@ int D = 512;
 int xlen = 512;
 signed short x_pos = 0;
 short x[512] = {0}; // because all the data is between -1 and 0.9999
-short delay[512] = {0}; //delay is a small number between -1 and 0.999
+int delay[512] = {0}; //delay is a small number between -1 and 0.999
 short y[512] = {0}; //y is a small number between -1 and 0.999
-signed int myCounter=0;
+
 
 
 //--------------------------------------------------------------------------//
@@ -114,7 +117,8 @@ void main(void)
 	
 	Enable_DMA_Sport0();
 		
-	calculate_delay();
+	//calculate_delay();
 	
 	while(1);
 }
+

@@ -220,5 +220,3 @@ void Init_Flags(void)
 	FIO_ANOM_0311_EDGE_W(0x0100);
 	FIO_ANOM_0311_MASKA_W(0x0100,pFIO_MASKA_D);
 }
-
-

@@ -3,19 +3,15 @@
 
 void calculate_delay(void)
 {
-	const double pi = 3.141597;
+	const float pi = 3.141597;
 	unsigned int i;
-	float a;
-	short b;
 	
-	for (i=D+1; i<=xlen; i++) //calculates the delay array
+	//for (i=D+1; i<=xlen; i++)
+	for (i=0; i<=xlen; i++) //calculates the delay array
 	{
-		//delay[i]=abs(round(D * cos (2*pi*i / (xlen-D-1))));
-		a = 2*pi*i;
-		a = ((a<<15) / (xlen-D-1)) >>15;
-		b = cos(a);
-		b = (D * (b<<15)) >>15;
-		delay[i]=abs(round(b));
+		delay[i] = abs(round(D * cos (2.0*pi* (float) i / (float) (1024-D-1)))); //from 512 to 0
 	}
 	//return 0;
 }
+
+
