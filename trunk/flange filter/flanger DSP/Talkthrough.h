@@ -82,9 +82,12 @@ extern volatile short sCodec1836TxRegs[];
 extern volatile int iRxBuffer1[];
 extern volatile int iTxBuffer1[];
 extern short FlagAMode;
+extern short xn, x1, x2, y1, y2;
+extern int yn;
+extern short b0, b1, b2, a1, a2; 
 
 
-	extern short delay[];
+	extern int delay[];
 	extern short x[];
 	extern short y[];
 	extern short x_pos;
@@ -117,3 +120,5 @@ EX_INTERRUPT_HANDLER(Sport0_RX_ISR);
 EX_INTERRUPT_HANDLER(FlagA_ISR);
 
 #endif //__Talkthrough_DEFINED
+
+
