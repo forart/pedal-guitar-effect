@@ -3,6 +3,7 @@
 
 #include "distortion.h"
 #include "wah_wah.h"
+#include "flanger.h"
 
 //--------------------------------------------------------------------------//
 // Function:	Process_Data()												//
@@ -40,8 +41,10 @@ void Process_Data(void)
 			// bit into the delay-line which is short
 			x[x_pos] = (short) (iChannel0LeftIn >> 16);			
 
-			yn = (22937 * (short) (applyWahWah(x, SIZE_DELAY_LINE_X) >> 16)) 
-				+ (9830 * (short) (applyDistortion(x, SIZE_DELAY_LINE_X) >> 16));
+			//yn = (22937 * (short) (applyWahWah(x, SIZE_DELAY_LINE_X) >> 16)) 
+			//	+ (9830 * (short) (applyDistortion(x, SIZE_DELAY_LINE_X) >> 16));
+			
+			yn = applyFlanger(x, SIZE_DELAY_LINE_X);
 						
 			if(++x_pos >= SIZE_DELAY_LINE_X)
 			{

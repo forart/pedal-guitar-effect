@@ -70,7 +70,7 @@
 #define PI (3.141592653589793F)
 #define FS (48000.0F)
 
-#define SIZE_DELAY_LINE_X   200
+#define SIZE_DELAY_LINE_X   1024
 #define SIZE_DELAY_LINE_Y   20
 
 //--------------------------------------------------------------------------//
@@ -112,7 +112,18 @@ extern short wah_maxfn;
 extern short wah_a;
 extern short wah_q1;
 
-extern short wah_yh, wah_yb, wah_yb1, wah_yl, wah_yl1;
+extern short wah_yh;
+extern short wah_yb;
+extern short wah_yb1;
+extern short wah_yl;
+extern short wah_yl1;
+
+// delay parameters
+extern short flanger_a;
+extern short flanger_D;
+extern short flanger_pos;
+extern short flanger_count;
+extern short flanger_delay[];
 //--------------------------------------------------------------------------//
 // Prototypes																//
 //--------------------------------------------------------------------------//
