@@ -107,6 +107,13 @@ short wah_yb1 = 0;
 short wah_yl = 0;
 short wah_yl1 = 0;
 
+// flanger parameters
+short flanger_a;
+short flanger_D;
+short flanger_pos = 0;
+short flanger_count = 0;
+short flanger_delay[512] = {0}; // Defined with the maximum size
+
 
 //--------------------------------------------------------------------------//
 // Function:	main														//
