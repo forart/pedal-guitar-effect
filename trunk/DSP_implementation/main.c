@@ -74,7 +74,7 @@ volatile int iTxBuffer1[8];
 volatile int iRxBuffer1[8];
 
 // init FlagAMode - hvad der skal ske ved pushbutton
-short FlagAMode = FIR_FILTER_ACTIVE; 
+short FlagAMode = PASS_THROUGH; 
 
 // Filter-relateret
 short x[SIZE_DELAY_LINE_X] = {0}; // init delay line

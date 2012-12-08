@@ -20,6 +20,14 @@
 void Process_Data(void)
 {
 	short tst = 100;
+	
+	if(FlagAMode != PASS_THROUGH)
+	{
+		// Delay-line
+		// the input signal is an int so we shift it to get the 16th most significant
+		// bit into the delay-line which is short
+		x[x_pos] = (short) (iChannel0LeftIn >> 16);	
+	}
 
 	// FlagAMode ændres ved at trykke på pushbutton	
 	switch (FlagAMode) {
@@ -34,60 +42,58 @@ void Process_Data(void)
 			iChannel1RightOut = iChannel1RightIn;
 			break;
 			
-		case FIR_FILTER_ACTIVE :
-		
-			// Delay-line
-			// the input signal is an int so we shift it to get the 16th most significant
-			// bit into the delay-line which is short
-			x[x_pos] = (short) (iChannel0LeftIn >> 16);			
-
-			//yn = (22937 * (short) (applyWahWah(x, SIZE_DELAY_LINE_X) >> 16)) 
-			//	+ (9830 * (short) (applyDistortion(x, SIZE_DELAY_LINE_X) >> 16));
-			
-			yn = applyFlanger(x, SIZE_DELAY_LINE_X);
-						
-			if(++x_pos >= SIZE_DELAY_LINE_X)
-			{
-				x_pos = 0;
-			}
-			if(++y_pos >= SIZE_DELAY_LINE_Y)
-			{
-				y_pos = 0;
-			}
-			
-			// Update y delay-line
-			y[y_pos] = (short) (yn >> 16);
-			
-			// Set the output
-			iChannel0LeftOut = yn;
-			iChannel0RightOut = yn;
-			
-			
-			//=========== Debug ===========
-			if(tst == 100)
-			{
-				if(myCounter < 2000)
-				{
-					yPlot[myCounter] = yn;
-					xPlot[myCounter] = x[x_pos];
-					myCounter++;
-				}
-				tst = 0;
-			}
-			else
-			{
-				tst++;
-			}
-			//========= End debug =========
+		case DISTORTION_ACTIVE :
+			yn = applyDistortion(x, SIZE_DELAY_LINE_X);
 			break;
 
 			
-		case IIR_FILTER_ACTIVE :
-	
+		case WAH_WAH_ACTIVE :
+			yn = applyWahWah(x, SIZE_DELAY_LINE_X);
+			break;
 			
+		case FLANGER_ACTIVE :
+			yn = applyFlanger(x, SIZE_DELAY_LINE_X);
 			break;
 	
 	}	// end switch
+	
+	
+	if(FlagAMode != PASS_THROUGH)
+	{
+		if(++x_pos >= SIZE_DELAY_LINE_X)
+		{
+			x_pos = 0;
+		}
+		if(++y_pos >= SIZE_DELAY_LINE_Y)
+		{
+			y_pos = 0;
+		}
+	
+		// Update y delay-line
+		y[y_pos] = (short) (yn >> 16);
+	
+		// Set the output
+		iChannel0LeftOut = yn;
+		iChannel0RightOut = yn;
+	
+	
+		//=========== Debug ===========
+		if(tst == 100)
+		{
+			if(myCounter < 2000)
+			{
+				yPlot[myCounter] = yn;
+				xPlot[myCounter] = x[x_pos];
+				myCounter++;
+			}
+			tst = 0;
+		}
+		else
+		{
+			tst++;
+		}
+		//========= End debug =========
+	}
 	
 	
 }
