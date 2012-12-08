@@ -1,6 +1,6 @@
 function y = flanger_m();
 
-[x, fs, n] = wavread('bip.wav'); %read in wav file 
+[x, fs, n] = wavread('acoustic.wav'); %read in wav file 
 
 %%%%%%% EFFECT COEFFICIENTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -25,6 +25,7 @@ end;
 for i = D+1:1:xlen % creates the matrix of delay
     delay(i) = abs(round(D * cos(2*pi*i/((xlen-D-1))))); % creates the delay
 end;
+plot(delay);
 for i = D+1:1:xlen % delays the signal
     y(i) = x(i) + a*x(i-delay(i)); %original sound with itself delayed added
 end;

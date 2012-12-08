@@ -13,9 +13,13 @@
 //--------------------------------------------------------------------------//
 // Symbolic constants														//
 //--------------------------------------------------------------------------//
-// addresses for Port B in Flash A
+// addresses for Port A in Flash A
 #define pFlashA_PortA_Dir	(volatile unsigned char *)0x20270006
 #define pFlashA_PortA_Data	(volatile unsigned char *)0x20270004
+
+// addresses in Flash for the LED's
+#define pFlashA_PortB_Dir	(volatile unsigned char *)0x20270007
+#define pFlashA_PortB_Data	(volatile unsigned char *)0x20270005
 
 // names for codec registers, used for iCodec1836TxRegs[]
 #define DAC_CONTROL_1		0x0000
@@ -60,10 +64,11 @@
 
 
 // FlagA - defines
-#define PASS_THROUGH	0
-#define FIR_FILTER_ACTIVE	1
-#define IIR_FILTER_ACTIVE	2
-#define NUMBER_FLAGA_STATES	2
+#define PASS_THROUGH		0
+#define DISTORTION_ACTIVE	1
+#define WAH_WAH_ACTIVE		2
+#define FLANGER_ACTIVE		3
+#define NUMBER_FLAGA_STATES	4
 
 #define ANTAL_FILTKOEF 3
 

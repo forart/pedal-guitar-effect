@@ -215,10 +215,10 @@ void Enable_DMA_Sport0(void)
 //--------------------------------------------------------------------------//
 void Init_Flags(void)
 {
-	FIO_ANOM_0311_INEN_W(0x0100);//*pFIO_INEN		= 0x0100, workaround for anomaly 05000311.
+	FIO_ANOM_0311_INEN_W(0x0300);//*pFIO_INEN		= 0x0100, workaround for anomaly 05000311.
 	FIO_ANOM_0311_DIR_W(0x0000);//For more information please refer to the comment header in file sys/05000311.h
-	FIO_ANOM_0311_EDGE_W(0x0100);
-	FIO_ANOM_0311_MASKA_W(0x0100,pFIO_MASKA_D);
+	FIO_ANOM_0311_EDGE_W(0x0300);
+	FIO_ANOM_0311_MASKA_W(0x0300,pFIO_MASKA_D);
 }
 
 
