@@ -4,6 +4,9 @@
 #include "distortion.h"
 #include "wah_wah.h"
 #include "flanger.h"
+#include "delay.h"
+#include "ringMode.h"
+#include "tremolo.h"
 
 //--------------------------------------------------------------------------//
 // Function:	Process_Data()												//
@@ -53,6 +56,18 @@ void Process_Data(void)
 			
 		case FLANGER_ACTIVE :
 			yn = applyFlanger(x, SIZE_DELAY_LINE_X);
+			break;
+		
+		case DELAY_ACTIVE :
+			yn = applyDelay(x, SIZE_DELAY_LINE_X);
+			break;
+			
+		case RING_MODE_ACTIVE :
+			yn = applyRingMode(x, SIZE_DELAY_LINE_X);
+			break;
+	
+		case TREMOLOT_ACTIVE :
+			yn = applyTremolo(x, SIZE_DELAY_LINE_X);
 			break;
 	
 	}	// end switch

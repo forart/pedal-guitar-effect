@@ -68,7 +68,10 @@
 #define DISTORTION_ACTIVE	1
 #define WAH_WAH_ACTIVE		2
 #define FLANGER_ACTIVE		3
-#define NUMBER_FLAGA_STATES	4
+#define DELAY_ACTIVE		4
+#define RING_MODE_ACTIVE	5
+#define TREMOLOT_ACTIVE		6
+#define NUMBER_FLAGA_STATES	7
 
 #define ANTAL_FILTKOEF 3
 
@@ -123,12 +126,34 @@ extern short wah_yb1;
 extern short wah_yl;
 extern short wah_yl1;
 
-// delay parameters
+// flanger parameters
 extern short flanger_a;
 extern short flanger_D;
 extern short flanger_pos;
 extern short flanger_count;
 extern short flanger_delay[];
+
+// delay parameters
+extern short delay;
+extern short gain;
+extern short delay_pos;
+
+// RingMode
+extern short ring_a1;
+extern short ring_a2;
+extern short ring_b0;
+extern short c1,c2;
+extern int cn;
+
+// TwoSin
+extern short ring_modulated;
+
+// Tremolo
+extern short trem_a1;
+extern short trem_a2;
+extern short trem_b0;
+extern short t1,t2;
+extern int tn;
 //--------------------------------------------------------------------------//
 // Prototypes																//
 //--------------------------------------------------------------------------//

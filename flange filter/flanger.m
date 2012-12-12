@@ -1,11 +1,13 @@
 function y = flanger_m();
 
-[x, fs, n] = wavread('acoustic.wav'); %read in wav file 
+[x, fs, n] = wavread('acoustic.wav'); %read in wav file
+
+x = vertcat(zeros(10000,1), x);
 
 %%%%%%% EFFECT COEFFICIENTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % it's used for increase the delayed effect amplitude
-a=1;
+a=0.9;
 
 %Calculate the number of samples in the delay
     % No. Of Samples = D = delay*fs
@@ -31,7 +33,7 @@ for i = D+1:1:xlen % delays the signal
 end;
 
 % write output wav files
-wavwrite(y, fs, n, 'flanger.wav');
+wavwrite(y, fs, n, 'flanger_dsp.wav');
 
 % make it sound
 sound(y,fs);
