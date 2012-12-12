@@ -5,6 +5,9 @@
 #include "distortion.h"
 #include "wah_wah.h"
 #include "flanger.h"
+#include "delay.h"
+#include "ringMode.h"
+#include "tremolo.h"
 
 void InitFilterCoefs(void) 
 {
@@ -16,9 +19,21 @@ void InitFilterCoefs(void)
 	
 	initWahWah(0.05 /* damp factor */, 500 /* minf */, 3000 /* maxf */, 2500 /* fw */);
 	
-	//********************** Delay *********************
+	//********************* Flanger *********************
 	
 	initFlanger(1.0 /* a */, 1e-3 /* delay */);
+	
+	//********************** Delay *********************
+	
+	initDelay(0.9999 /* g */, 50e-3 /* delay_time */);
+	
+	//********************** Ring Mode *********************
+	
+	initRingMode(200 /* freq */);
+	
+	//********************** Tremolo *********************
+	
+	initTremolo( 0.5 /*delta*/, 5 /*ftrem*/);
 }
 
 

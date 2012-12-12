@@ -114,6 +114,27 @@ short flanger_pos = 0;
 short flanger_count = 0;
 short flanger_delay[512] = {0}; // Defined with the maximum size
 
+//Delay
+short delay;
+short gain;
+
+// RingMode
+short ring_a1;
+short ring_a2;
+short ring_b0;;
+short c1,c2;
+int cn;
+
+// TwoSin
+short ring_modulated;
+
+// Tremolo
+short trem_a1;
+short trem_a2;
+short trem_b0;
+short t1,t2;
+int tn;
+
 
 //--------------------------------------------------------------------------//
 // Function:	main														//
