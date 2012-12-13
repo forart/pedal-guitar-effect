@@ -22,7 +22,7 @@ void initDistortion(float a, float b, float threshold)
 	dist_b = (short) ((4.0 / 16.0) * pow(2, 15));
 	
 	// Convertion into Q31
-	dist_threshold = (int) ((0.30519) * pow(2, 31));
+	dist_threshold = (int) (threshold * pow(2, 31));
 }
 
 int applyDistortion(short* x, short sizeDelayLineX)

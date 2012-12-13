@@ -42,7 +42,7 @@ int applyFlanger(short* x, short sizeDelayLineX)
 		yn = 32767 * x[x_pos] +  flanger_a * x[x_pos - flanger_delay[flanger_pos]];
 	}
 	
-	if(++count == 100)
+	if(++count == 50)
 	{
 		count = 0;
 		if(++flanger_pos >= (SIZE_DELAY_LINE_X - flanger_D - 1) >> 1) // >> 1 is used to divide by 2
