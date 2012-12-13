@@ -8,16 +8,18 @@
 #include "delay.h"
 #include "ringMode.h"
 #include "tremolo.h"
+#include "compressor.h"
+#include "noisegate.h"
 
 void InitFilterCoefs(void) 
 {
 	//******************* Distortion *******************
 		
-	initDistortion(4.0 /* a */, 4.0 /* b */, 0.30);
+	initDistortion(2.0 /* a */, 2.0 /* b */, 0.15);
 	
 	//********************* Wah-Wah ********************
 	
-	initWahWah(0.05 /* damp factor */, 500 /* minf */, 3000 /* maxf */, 2500 /* fw */);
+	initWahWah(0.05 /* damp factor */, 500 /* minf */, 3000 /* maxf */, 4500 /* fw */);
 	
 	//********************* Flanger *********************
 	
@@ -25,7 +27,7 @@ void InitFilterCoefs(void)
 	
 	//********************** Delay *********************
 	
-	initDelay(0.9999 /* g */, 50e-3 /* delay_time */);
+	initDelay(0.9999 /* g */, 100e-3 /* delay_time */);
 	
 	//********************** Ring Mode *********************
 	
@@ -33,7 +35,15 @@ void InitFilterCoefs(void)
 	
 	//********************** Tremolo *********************
 	
-	initTremolo( 0.5 /*delta*/, 5 /*ftrem*/);
+	initTremolo( 0.8 /*delta*/, 4 /*ftrem*/);
+	
+	//********************** Compressor *********************
+	
+	initCompr(1500 /* threshold */, 0.5 /*ratio*/);
+	
+	//********************** Noise Gate *********************
+	
+	initNoise(50 /* threshold */, 0 /*ratio*/);
 }
 
 

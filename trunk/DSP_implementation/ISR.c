@@ -72,7 +72,7 @@ EX_INTERRUPT_HANDLER(FlagA_ISR)
 	}	
 	
 	if (FlagAMode == NUMBER_FLAGA_STATES) FlagAMode = PASS_THROUGH;
-	else if(FlagAMode == -1) FlagAMode = FLANGER_ACTIVE;
+	else if(FlagAMode == -1) FlagAMode = NUMBER_FLAGA_STATES - 1;
 	
 	switch(FlagAMode)
 	{

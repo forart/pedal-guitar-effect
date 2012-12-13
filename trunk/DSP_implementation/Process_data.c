@@ -7,6 +7,8 @@
 #include "delay.h"
 #include "ringMode.h"
 #include "tremolo.h"
+#include "compressor.h"
+#include "noisegate.h"
 
 //--------------------------------------------------------------------------//
 // Function:	Process_Data()												//
@@ -68,6 +70,14 @@ void Process_Data(void)
 	
 		case TREMOLOT_ACTIVE :
 			yn = applyTremolo(x, SIZE_DELAY_LINE_X);
+			break;
+			
+		case COMPRESSOR_ACTIVE :
+			yn = applyComp(x);
+			break;
+			
+		case NOISE_GATE_ACTIVE :
+			yn = applyNoise(x);
 			break;
 	
 	}	// end switch
